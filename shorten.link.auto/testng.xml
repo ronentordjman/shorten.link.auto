@@ -1,0 +1,14 @@
+<suite name="Regression1">
+    <test name="Tutorial Sections Tests">
+
+        <classes>
+            <class name="ShortenLinkTests">
+                <methods>
+
+                    <include name="shortLink" />
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+</suite>
