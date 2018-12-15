@@ -1,3 +1,4 @@
+import org.apache.commons.exec.OS;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,6 +9,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
@@ -20,8 +22,19 @@ public class ShortenLinkTests {
     @BeforeTest
     public void beforeTest() throws Exception{
         Reporter.log("invoking chrome driver");
-        System.setProperty("webdriver.chrome.driver",
-                "src\\main\\resources\\drivers\\chromedriver.exe");
+
+        String driverFileName = String.join(File.separator,"src","main",
+                "resources","drivers","chromedriver");
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            //windows os
+            System.setProperty("webdriver.chrome.driver",
+                    driverFileName + ".exe");
+        }
+        else {
+            //linux os
+            System.setProperty("webdriver.chrome.driver",
+                    driverFileName);
+        }
         driver = new ChromeDriver();
         navigateToHomePage();
     }
