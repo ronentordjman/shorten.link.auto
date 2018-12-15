@@ -41,7 +41,8 @@ public class ShortenLinkTests {
 
     public void loadParams(){
         InputStream input = null;
-        String fileName = "src\\main\\resources\\params.properties";
+        String fileName = String.join(File.separator,"src","main",
+                "resources","params.properties");
         try {
 //            fileName =  System.getProperty("params");
             Reporter.log("params file name " + fileName);
